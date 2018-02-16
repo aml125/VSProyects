@@ -1,5 +1,4 @@
 ﻿  Form1.cpp
-c:\users\eps\documents\visual studio 2017\projects\ejerciciosensamblador\ejemplo2\form1.h(205): warning C4793: 'division_entera': función compilada como nativa :
+c:\users\eps\documents\visual studio 2017\projects\vsproyects\ejerciciosensamblador\ejemplo2\form1.h(205): warning C4793: 'division_entera': función compilada como nativa :
   	Ensamblado nativo insertado no admitido en código administrado
-  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
-  Ejemplo2.vcxproj -> C:\Users\EPS\Documents\Visual Studio 2017\Projects\EjerciciosEnsamblador\Debug\Ejemplo2.exe
+  Ejemplo2.vcxproj -> C:\Users\EPS\Documents\Visual Studio 2017\Projects\VSProyects\EjerciciosEnsamblador\Debug\Ejemplo2.exe
