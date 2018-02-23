@@ -4,11 +4,11 @@
 
 using namespace std;
 
-int burbuja(int* lista);
+void burbuja(int* lista, int tam);
 
-void mostrarLista(int* lista)
+void mostrarLista(int* lista, int tam)
 {
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < tam; i++)
 	{
 		cout << lista[i] << " ";
 	}
@@ -17,21 +17,21 @@ void mostrarLista(int* lista)
 
 int main( void )
 {
-	int lista []={2,1,3};
-	cout << burbuja(lista) << endl;
-	mostrarLista(lista);
-	char fuck;
-	cin >> fuck;
+	int lista []={2, 1, 3, 40, 34, 1, 9, 12 ,45 ,1234, 34, 43, 34, 94, 12, 24, 23, 45, 56, 67, 78};
+	int tam = 20;
+	burbuja(lista, tam);
+	mostrarLista(lista, tam);
+	char espera;
+	cin >> espera;
 }
 
-int burbuja(int* lista)
+void burbuja(int* lista, int tam)
 {
-
 	__asm
 	{
 		mov esi, lista; Cargar la lista
 		mov ebx, 0; Variable i = 0
-		mov ecx, 3; size
+		mov ecx, tam; size of list
 		
 		mov eax, [esi + 4]
 
@@ -48,7 +48,7 @@ bucle2:
 				inc eax
 				mov edi, [esi + eax*4]; operando 2
 				cmp edx, edi; si (vector[j-1]<vector[j])
-				jl swaperfucker
+				jl cambiar
 endif:
 			dec eax; j--
 			jmp bucle2
@@ -58,7 +58,7 @@ fin2:
 fin1:
 
 jmp fin
-swaperfucker:
+cambiar:
 		dec eax
 		mov edx, [esi + eax*4] ;intercambiar(vector[j-1],vector[j])
 		inc eax
