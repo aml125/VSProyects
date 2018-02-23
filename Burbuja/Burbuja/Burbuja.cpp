@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void burbuja(int* lista);
+int burbuja(int* lista);
 
 void mostrarLista(int* lista)
 {
@@ -18,36 +18,39 @@ void mostrarLista(int* lista)
 int main( void )
 {
 	int lista []={2,1,3};
+	cout << burbuja(lista) << endl;
 	mostrarLista(lista);
 	char fuck;
 	cin >> fuck;
 }
 
-void burbuja(int* lista)
+int burbuja(int* lista)
 {
 
 	__asm
 	{
-		mov edx, lista; Cargar la lista
+		mov esi, lista; Cargar la lista
 		mov ebx, 0; Variable i = 0
 		mov ecx, 3; size
 		
-		mov eax, [edx + 4]
+		mov eax, [esi + 4]
 
 bucle1:
 		cmp ebx, ecx; bucle1
 		jge fin1; Hasta i = n - 1 (incluido)
-			mov ebp, ecx; variable j = n - 1
-			dec ebp
+			mov eax, ecx; variable j = n - 1
+			dec eax
 bucle2:
-			cmp ebp, ebx; bucle 2
+			cmp eax, ebx; bucle 2
 			jle fin2; Hasta j = i + 1 (incluido)
-				mov esi, [edx + (ebp - 1)*4]; operando 1
-				mov edi, [edx + ebp*4]; operando 2
-				cmp esi, edi; si (vector[j-1]<vector[j])
-				jl swap
+				dec eax
+				mov edx, [esi + eax*4]; operando 1
+				inc eax
+				mov edi, [esi + eax*4]; operando 2
+				cmp edx, edi; si (vector[j-1]<vector[j])
+				jl swaperfucker
 endif:
-			dec ebp; j--
+			dec eax; j--
 			jmp bucle2
 fin2:
 		inc ebx
@@ -55,10 +58,14 @@ fin2:
 fin1:
 
 jmp fin
-swap:
-		mov eax, [edx + (ebp - 1)*4] ;intercambiar(vector[j-1],vector[j])
-		xchg eax, [edx + ebp*4]
-		mov [edx + (ebp - 1)*4], eax
+swaperfucker:
+		dec eax
+		mov edx, [esi + eax*4] ;intercambiar(vector[j-1],vector[j])
+		inc eax
+		xchg edx, [esi + eax*4]
+		dec eax
+		mov [esi + eax*4], edx
+		inc eax
 		jmp endif
 fin:
 	}
